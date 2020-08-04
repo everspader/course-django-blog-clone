@@ -30,6 +30,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     redirect_field_name = 'blog/post_detail.html'
     from_class = PostForm
     model = Post
+    fields = ['author', 'title', 'text']
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
@@ -37,6 +38,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     redirect_field_name = 'blog/post_detail.html'
     from_class = PostForm
     model = Post
+    fields = ['author', 'title', 'text']
 
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
@@ -66,7 +68,7 @@ def add_comment_to_post(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = CommentForm()
-    return render(request, 'blog/comment_form', {'form': form})
+    return render(request, 'blog/comments_form.html', {'form': form})
 
 @login_required
 def comment_approve(request, pk):
@@ -84,5 +86,5 @@ def comment_remove(request, pk):
 @login_required
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    pust.publish
+    post.publish()
     return redirect('post_detail', pk=pk)
