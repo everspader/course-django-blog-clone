@@ -16,11 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import re_path, include
 from django.contrib.auth import views
-from blog import views
+#from blog import views
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     re_path(r'', include('blog.urls')),
-    re_path(r'accounts/login/$', views.login, name='login'),
-    re_path(r'accounts/logout/$', views.logout, name='logout', kwargs={'next_page':'/'}),
+    re_path(r'accounts/login/$',
+        views.LoginView.as_view(template_name='registration/login.html'),
+        name='login'),
+    re_path(r'accounts/logout/$',
+        views.LogoutView.as_view(),
+        name='logout', kwargs={'next_page':'/'}),
 ]
