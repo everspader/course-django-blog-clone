@@ -13,6 +13,26 @@
     margin-right: auto;
 }
 
+.postdate{
+    text-align: center;
+}
+
+.posttitle{
+    font-family: 'Russo One', sans-serif;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.postcontent{
+    font-family: 'Montserrat';
+    font-size: 1.5em;
+}
+
+.btn-comment{
+    position: absolute;
+    right: 0px;
+}
+
 /*COLOR CHANGER*/
 /*Credit and Source: http://codepen.io/thapliyalshivam/pen/dvgXVO*/
 .loader{
