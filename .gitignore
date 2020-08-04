@@ -139,3 +139,5 @@ static/
 .vscode/
 
 *.code-workspace
+
+secrets.py
